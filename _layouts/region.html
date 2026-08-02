@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<div class="market-layout">
+<div class="list-page">
+
+  <nav class="breadcrumb">
+    <a href="/">홈</a>
+    <span>›</span>
+    <span>{{ page.region }} 이색거리</span>
+  </nav>
+
+  <div class="list-header">
+    <h1>🗺️ {{ page.region }} 이색거리·테마골목</h1>
+    <p class="list-count">총 {{ page.streets | size }}곳</p>
+  </div>
+
+  <!-- 광고 -->
+  <div class="ad-slot">{% include ad.html %}</div>
+
+  <div class="market-cards">
+    {% for street in page.streets %}
+    <a href="/street/{{ street.slug }}/" class="market-card {% if street.image and street.image != '' %}has-img{% endif %}">
+      {% if street.image and street.image != "" %}
+      <img class="market-card-img" src="{{ street.image }}" alt="{{ street.streetName }}" loading="lazy">
+      <div class="market-card-body">
+      {% endif %}
+      <div class="card-name">{{ street.streetName }}</div>
+      <div class="card-city">{{ street.city }} · {{ street.themeIcon }} {{ street.themeLabel }}</div>
+      {% if street.image and street.image != "" %}</div>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="region-nav">
+    <h3>다른 지역</h3>
+    <div class="region-btn-grid">
+      {% assign all_regions = site.data.streets | map: 'region' | uniq | sort %}
+      {% for r in all_regions %}
+      {% assign r_slug = site.data.streets | where: 'region', r | first %}
+      {% if r != page.region %}
+      <a href="/region/{{ r_slug.regionSlug }}/" class="region-btn-sm">{{ r }}</a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+<aside class="market-sidebar">
+  {% include ad.html slot="6255378195" label="사이드바" %}
+</aside>
+</div>

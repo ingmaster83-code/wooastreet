@@ -1,0 +1,25 @@
+title: 우아거리 - 전국 이색거리·테마골목 정보
+description: 전국 172곳 이색거리·테마골목 정보를 한눈에 확인하세요. 지역별 먹거리골목·카페거리·예술거리 등 가볼만한 동네 명소 안내.
+url: "https://wooastreet.wooahouse.com"
+baseurl: ""
+lang: ko
+timezone: Asia/Seoul
+author: WooaHouse
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - scripts/
+  - "*.py"
+  - README.md
+  - .gitignore
+  - vendor/
